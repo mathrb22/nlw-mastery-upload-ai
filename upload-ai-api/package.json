@@ -1,0 +1,17 @@
+{
+  "name": "upload-ai-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "tsx": "^3.12.10",
+    "typescript": "^5.2.2"
+  }
+}
