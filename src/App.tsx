@@ -27,7 +27,7 @@ export function App() {
 						Desenvolvido com 💚 por{' '}
 						<a
 							className='hover:underline'
-							href='http://github.com/mathrb22'
+							href='https://github.com/mathrb22'
 							target='_blank'
 							rel='noopener noreferrer'>
 							@mathrb22
@@ -38,7 +38,7 @@ export function App() {
 					{/* <Separator orientation='horizontal' className='w-full block md:hidden' /> */}
 
 					<a
-						href='http://github.com/mathrb22'
+						href='https://github.com/mathrb22/upload-ai-web'
 						target='_blank'
 						rel='noopener noreferrer'>
 						<Button className='flex gap-2' variant='outline' size='default'>
@@ -96,7 +96,7 @@ export function App() {
 							<Label htmlFor='transcription_prompt'>Prompt de transcrição</Label>
 							<Textarea
 								id='transcription_prompt'
-								className=' h-22 p-4 resize-none leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full'
+								className=' h-20 p-4 resize-none leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full'
 								placeholder='Inclua palavras-chave mencionadas no vídeo separadas por vírgula (,)'></Textarea>
 						</div>
 
@@ -128,8 +128,6 @@ export function App() {
 								Você poderá customizar esta opção em breve
 							</span>
 						</div>
-
-						<Separator />
 
 						<div className='space-y-2'>
 							<Label>Modelo</Label>
