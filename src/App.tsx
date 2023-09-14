@@ -5,16 +5,25 @@ import { Separator } from './components/ui/separator';
 import { Textarea } from './components/ui/textarea';
 import { FiUpload } from 'react-icons/fi';
 import { LuFileVideo } from 'react-icons/lu';
+import { FaWandMagicSparkles } from 'react-icons/fa6';
 import { Label } from './components/ui/label';
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from './components/ui/select';
+import { Slider } from './components/ui/slider';
 
 export function App() {
 	return (
 		<div className='min-h-screen flex flex-col'>
-			<header className='px-6 py-3 flex items-center justify-between border-b'>
+			<header className='px-6 py-3 flex flex-col gap-3 md:flex-row items-center justify-between border-b sticky top-0 bg-background'>
 				<h1 className='text-xl font-bold'>upload.ai</h1>
 
 				<div className='flex items-center gap-3'>
-					<span className='text-sm text-muted-foreground'>
+					<span className='text-xs md:text-sm text-muted-foreground'>
 						Desenvolvido com 💚 por{' '}
 						<a
 							className='hover:underline'
@@ -25,7 +34,8 @@ export function App() {
 						</a>
 					</span>
 
-					<Separator orientation='vertical' className='h-6' />
+					<Separator orientation='vertical' className='h-6 hidden md:block' />
+					{/* <Separator orientation='horizontal' className='w-full block md:hidden' /> */}
 
 					<a
 						href='http://github.com/mathrb22'
@@ -40,9 +50,9 @@ export function App() {
 				</div>
 			</header>
 
-			<main className='flex gap-6 flex-1 p-6'>
-				<section className='flex flex-col flex-1 gap-4 scrol'>
-					<div className='grid grid-rows-2 gap-4 flex-1'>
+			<main className='flex flex-col gap-6 flex-1 p-6 md:flex-row'>
+				<section className='flex flex-col flex-1 gap-4 '>
+					<div className='grid grid-rows-2 gap-4 h-[400px] md:flex-1 md:h-auto'>
 						<Textarea
 							className='resize-none p-4 leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full
 							hover:scrollbar-thumb-zinc-700
@@ -63,7 +73,7 @@ export function App() {
 						prompt para adicionar o conteúdo da transcrição do vídeo selecionado
 					</p>
 				</section>
-				<aside className='w-80 space-y-6'>
+				<aside className='w-auto md:w-80 space-y-6 scroll-auto'>
 					<form className='space-y-6'>
 						<label
 							htmlFor='video'
@@ -82,11 +92,11 @@ export function App() {
 
 						<Separator />
 
-						<div className='space-y-1'>
+						<div className='space-y-2'>
 							<Label htmlFor='transcription_prompt'>Prompt de transcrição</Label>
 							<Textarea
 								id='transcription_prompt'
-								className='min-h-20 p-4 leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full'
+								className=' h-22 p-4 resize-none leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full'
 								placeholder='Inclua palavras-chave mencionadas no vídeo separadas por vírgula (,)'></Textarea>
 						</div>
 
@@ -96,6 +106,66 @@ export function App() {
 							size='default'>
 							<span> Carregar vídeo</span>
 							<FiUpload size={16} />
+						</Button>
+					</form>
+
+					<Separator />
+
+					<form className='space-y-6'>
+						<div className='space-y-2'>
+							<Label>Prompt</Label>
+
+							<Select>
+								<SelectTrigger>
+									<SelectValue placeholder='Selecione um prompt' />
+								</SelectTrigger>
+								<SelectContent>
+									<SelectItem value='title'>Título do YouTube</SelectItem>
+									<SelectItem value='description'>Descrição do YouTube</SelectItem>
+								</SelectContent>
+							</Select>
+							<span className='block text-xs italic text-muted-foreground'>
+								Você poderá customizar esta opção em breve
+							</span>
+						</div>
+
+						<Separator />
+
+						<div className='space-y-2'>
+							<Label>Modelo</Label>
+
+							<Select disabled defaultValue='gpt3.5'>
+								<SelectTrigger>
+									<SelectValue />
+								</SelectTrigger>
+								<SelectContent>
+									<SelectItem value='gpt3.5'>GPT 3.5-turbo 16k</SelectItem>
+								</SelectContent>
+							</Select>
+							<span className='block text-xs italic text-muted-foreground'>
+								Você poderá customizar esta opção em breve
+							</span>
+						</div>
+
+						<Separator />
+
+						<div className='space-y-4'>
+							<Label>Temperatura</Label>
+
+							<Slider min={0} max={1} step={0.1} className='cursor-pointer' />
+
+							<span className='leading-relaxed block text-xs italic text-muted-foreground'>
+								Valores mais altos tendem a deixar o resultado mais criativo e com
+								possíveis erros.
+							</span>
+						</div>
+
+						<Separator />
+
+						<Button type='submit' className='w-full flex items-center gap-3'>
+							<span> Executar</span>
+
+							<FaWandMagicSparkles size={16} />
 						</Button>
 					</form>
 				</aside>
