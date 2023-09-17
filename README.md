@@ -67,7 +67,8 @@ O projeto **Upload.ai** possui muitas aplicações práticas. Ele poderá ajudar
         <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">Next.js</a>,
         <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">TailwindCSS</a>,
         <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">Vite.js</a>,
-        <a href="https://radix-ui.com/" target="_blank" rel="noopener noreferrer">Radix UI</a>
+        <a href="https://radix-ui.com/" target="_blank" rel="noopener noreferrer">Radix UI</a>,
+        <a href="https://ffmpegwasm.netlify.app/" target="_blank" rel="noopener noreferrer">ffmpeg.wasm</a>
       </td>
     </tr>
     <tr>
