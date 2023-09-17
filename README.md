@@ -159,6 +159,16 @@ DATABASE_URL="file:./dev.db"
 OPENAI_KEY="sua OpenAI key"
 ```
 
+Rode o comando a seguir para gerar o client do Prisma:
+
+```bash
+# pnpm
+pnpm prisma generate
+
+# npm
+npm prisma generate
+```
+
 Execute as migrations do banco de dados:
 
 ```bash
