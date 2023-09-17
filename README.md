@@ -109,7 +109,7 @@ Para instalar as dependências e executar o projeto terá que ter instalado em s
 Acesse a pasta do projeto:
 
 ```bash
-cd nlw-mastery-upload-ai/web
+cd web
 ```
 
 Instale as dependências usando **pnpm** ou **npm**:
@@ -139,7 +139,7 @@ A aplicação estará disponível em http://localhost:5173. Você poderá acess�
 Acesse a pasta do projeto:
 
 ```bash
-cd nlw-mastery-upload-ai/api
+cd api
 ```
 
 Instale as dependências usando **pnpm** ou **npm**:
