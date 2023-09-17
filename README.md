@@ -193,7 +193,7 @@ Pull requests são sempre bem-vindos. Em caso de dúvidas ou sugestões, crie um
 
 ## 📝 Licença
 
-<a href="https://github.com/mathrb22/nlw-mastery-upload-ai/blob/main/LICENSE.md">
+<a href="https://github.com/mathrb22/nlw-mastery-upload-ai/blob/main/LICENSE">
     <img alt="GitHub License" src="https://img.shields.io/github/license/mathrb22/nlw-mastery-upload-ai">
 </a>
 
