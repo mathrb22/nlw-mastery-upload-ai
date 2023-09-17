@@ -3,8 +3,7 @@ import { DiGithubBadge } from 'react-icons/di';
 import { RxExternalLink } from 'react-icons/rx';
 import { Separator } from './components/ui/separator';
 import { Textarea } from './components/ui/textarea';
-import { FiUpload } from 'react-icons/fi';
-import { LuFileVideo } from 'react-icons/lu';
+
 import { FaWandMagicSparkles } from 'react-icons/fa6';
 import { Label } from './components/ui/label';
 import {
@@ -15,11 +14,12 @@ import {
 	SelectValue,
 } from './components/ui/select';
 import { Slider } from './components/ui/slider';
+import { VideoInputForm } from './components/video-input-form';
 
 export function App() {
 	return (
 		<div className='min-h-screen flex flex-col'>
-			<header className='px-6 py-3 flex flex-col gap-3 md:flex-row items-center justify-between border-b sticky top-0 bg-background'>
+			<header className='px-6 py-3 flex flex-col gap-3 md:flex-row items-center justify-between border-b sticky top-0 bg-background z-10'>
 				<h1 className='text-xl font-bold'>upload.ai</h1>
 
 				<div className='flex items-center gap-3'>
@@ -73,41 +73,9 @@ export function App() {
 						prompt para adicionar o conteúdo da transcrição do vídeo selecionado
 					</p>
 				</section>
+
 				<aside className='w-auto md:w-80 space-y-6 scroll-auto'>
-					<form className='space-y-6'>
-						<label
-							htmlFor='video'
-							className='flex flex-col gap-2 items-center justify-center w-full border cursor-pointer rounded-md aspect-video border-dashed text-sm text-muted-foreground hover:bg-primary/5 transition-colors'>
-							{/* <FiUpload size={20} /> */}
-							<LuFileVideo size={22} />
-							<span> Selecione um vídeo</span>
-						</label>
-						<input
-							type='file'
-							name='video'
-							id='video'
-							accept='video/mp4'
-							className='sr-only'
-						/>
-
-						<Separator />
-
-						<div className='space-y-2'>
-							<Label htmlFor='transcription_prompt'>Prompt de transcrição</Label>
-							<Textarea
-								id='transcription_prompt'
-								className=' h-20 p-4 resize-none leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full'
-								placeholder='Inclua palavras-chave mencionadas no vídeo separadas por vírgula (,)'></Textarea>
-						</div>
-
-						<Button
-							type='submit'
-							className='w-full flex items-center gap-3'
-							size='default'>
-							<span> Carregar vídeo</span>
-							<FiUpload size={16} />
-						</Button>
-					</form>
+					<VideoInputForm />
 
 					<Separator />
 
