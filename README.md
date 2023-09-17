@@ -25,7 +25,7 @@
 [**Sobre**](#-sobre) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Objetivo**](#-objetivo) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Features**](#-features) &nbsp;&nbsp;**|**&nbsp;&nbsp;
-[**Tecnologias e ferramentas**](#-tecnologias-e-ferramentas-utilizadas) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Tecnologias e ferramentas**](#-tecnologias-e-ferramentas) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Organização do projeto**](#-organização-do-projeto) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Instalação e execução**](#-instalação-e-execução) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Como contribuir**](#-como-contribuir) &nbsp;&nbsp;**|**&nbsp;&nbsp;
@@ -84,7 +84,7 @@ O projeto **Upload.ai** possui muitas aplicações práticas. Ele poderá ajudar
   </tbody>
 </table>
 
-## 🗂️ Organização do projeto
+## 📂 Organização do projeto
 
 Este repositório é dividido em dois principais diretórios:
 
