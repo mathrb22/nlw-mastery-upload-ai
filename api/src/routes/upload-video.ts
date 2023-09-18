@@ -39,19 +39,24 @@ export async function uploadVideoRoute(app: FastifyInstance) {
 
 		const uploadDestination = path.resolve(
 			__dirname,
-			'../../temp',
+			'../../tmp',
 			fileUploadName
 		);
 
-		await pump(data.file, fs.createWriteStream(uploadDestination));
+		try {
+			await pump(data.file, fs.createWriteStream(uploadDestination));
 
-		const video = await prisma.video.create({
-			data: {
-				name: data.filename,
-				path: uploadDestination,
-			},
-		});
-
-		return reply.status(201).send({ video });
+			const video = await prisma.video.create({
+				data: {
+					name: data.filename,
+					path: uploadDestination,
+				},
+			});
+			return reply.status(201).send({ video });
+		} catch (error) {
+			return reply.status(500).send({
+				error: 'Internal server error: ' + error,
+			});
+		}
 	});
 }

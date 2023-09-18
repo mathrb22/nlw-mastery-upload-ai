@@ -14,6 +14,7 @@ import {
 } from 'react';
 import { getFFmpeg } from '@/lib/ffmpeg';
 import { fetchFile } from '@ffmpeg/util';
+import { api } from '@/lib/axios';
 
 export function VideoInputForm() {
 	const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -78,7 +79,13 @@ export function VideoInputForm() {
 		//converter o vídeo em áudio;
 		const audioFile = await convertVideoToAudio(videoFile);
 
-		console.log(audioFile, prompt);
+		const data = new FormData();
+
+		data.append('file', audioFile);
+
+		const response = await api.post('/videos', data);
+
+		console.log(response.data);
 	}
 
 	const previewURL = useMemo(() => {
