@@ -19,10 +19,13 @@ import { PromptSelect } from './components/prompt-select';
 import { useState } from 'react';
 import { useCompletion } from 'ai/react';
 import PulseLoader from 'react-spinners/PulseLoader';
+import { MdOutlineContentCopy } from 'react-icons/md';
+import { LuCheck } from 'react-icons/lu';
 
 export function App() {
 	const [temperature, setTemperature] = useState(0.5);
 	const [videoId, setVideoId] = useState<string | null>(null);
+	const [clipboardCopied, setClipboardCopied] = useState(false);
 
 	const {
 		input,
@@ -41,6 +44,17 @@ export function App() {
 			'Content-Type': 'application/json',
 		},
 	});
+
+	function handleCopyAIResultToClipboard() {
+		if (!completion || clipboardCopied) return;
+
+		navigator.clipboard.writeText(completion);
+		setClipboardCopied(true);
+
+		setTimeout(() => {
+			setClipboardCopied(false);
+		}, 1000);
+	}
 
 	return (
 		<div className='min-h-screen flex flex-col'>
@@ -86,13 +100,33 @@ export function App() {
 							value={input}
 							onChange={handleInputChange}
 						/>
-						<Textarea
-							className='resize-none p-4 leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full
+						<div className='h-full relative'>
+							<Textarea
+								className='h-full resize-none p-4 leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full
 							hover:scrollbar-thumb-zinc-700'
-							placeholder='Resultado gerado pela IA:'
-							readOnly
-							value={completion}
-						/>
+								placeholder='Resultado gerado pela IA:'
+								readOnly
+								value={completion}
+							/>
+
+							{completion && (
+								<button
+									disabled={isLoading}
+									className={`group absolute bottom-2 right-2 text-muted-foreground transition-all p-2 rounded-md border border-gray-700 hover:text-current hover:border-gray-600 disabled:text-muted-foreground disabled:pointer-events-none disabled:border-gray-700 ${
+										clipboardCopied ? 'border-primary-foreground' : ''
+									}`}
+									onClick={handleCopyAIResultToClipboard}>
+									{clipboardCopied ? (
+										<LuCheck size={18} className={'text-primary transition-all'} />
+									) : (
+										<MdOutlineContentCopy
+											size={18}
+											className={'transition-all animate-out group-hover:text-white'}
+										/>
+									)}
+								</button>
+							)}
+						</div>
 					</div>
 
 					<p className='text-sm text-muted-foreground'>
