@@ -14,7 +14,7 @@
    <a href="https://github.com/mathrb22/nlw-mastery-upload-ai/pulls">
       <img alt="Pull Requests Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
    </a>
-   <a href="https://github.com/mathrb22/nlw-mastery-upload-ai/blob/main/LICENSE.md">
+   <a href="https://github.com/mathrb22/nlw-mastery-upload-ai/blob/main/LICENSE">
       <img alt="GitHub License" src="https://img.shields.io/github/license/mathrb22/nlw-mastery-upload-ai">
    </a>
 </div>
