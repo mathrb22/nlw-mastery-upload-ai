@@ -70,7 +70,8 @@ O projeto **Upload.ai** possui muitas aplicações práticas. Ele poderá ajudar
         <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">Vite.js</a>,
         <a href="https://radix-ui.com/" target="_blank" rel="noopener noreferrer">Radix UI</a>,
         <a href="https://ffmpegwasm.netlify.app/" target="_blank" rel="noopener noreferrer">ffmpeg.wasm</a>,
-        <a href="https://axios-http.com/" target="_blank" rel="noopener noreferrer">Axios</a>
+        <a href="https://axios-http.com/" target="_blank" rel="noopener noreferrer">Axios</a>,
+        <a href="https://www.npmjs.com/package/ai" target="_blank" rel="noopener noreferrer">Vercel AI SDK</a>
       </td>
     </tr>
     <tr>
@@ -81,7 +82,9 @@ O projeto **Upload.ai** possui muitas aplicações práticas. Ele poderá ajudar
         <a href="https://www.prisma.io/" target="_blank" rel="noopener noreferrer">Prisma</a>,
         <a href="https://www.fastify.io/" target="_blank" rel="noopener noreferrer">Fastify</a>,
         <a href="https://zod.dev/" target="_blank" rel="noopener noreferrer">Zod</a>,
-        <a href="https://www.sqlite.org/index.html" target="_blank" rel="noopener noreferrer">SQLite</a>
+        <a href="https://www.sqlite.org/index.html" target="_blank" rel="noopener noreferrer">SQLite</a>,
+        <a href="https://www.npmjs.com/package/openai" target="_blank" rel="noopener noreferrer">OpenAI Node API</a>,
+        <a href="https://www.npmjs.com/package/ai" target="_blank" rel="noopener noreferrer">Vercel AI SDK</a>
       </td>
     </tr>
   </tbody>
