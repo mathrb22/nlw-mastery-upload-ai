@@ -15,8 +15,33 @@ import {
 } from './components/ui/select';
 import { Slider } from './components/ui/slider';
 import { VideoInputForm } from './components/video-input-form';
+import { PromptSelect } from './components/prompt-select';
+import { useState } from 'react';
+import { useCompletion } from 'ai/react';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 export function App() {
+	const [temperature, setTemperature] = useState(0.5);
+	const [videoId, setVideoId] = useState<string | null>(null);
+
+	const {
+		input,
+		setInput,
+		handleInputChange,
+		handleSubmit,
+		completion,
+		isLoading,
+	} = useCompletion({
+		api: 'http://localhost:3333/ai/complete',
+		body: {
+			videoId,
+			temperature,
+		},
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
 	return (
 		<div className='min-h-screen flex flex-col'>
 			<header className='px-6 py-3 flex flex-col gap-3 md:flex-row items-center justify-between border-b sticky top-0 bg-background z-10'>
@@ -58,12 +83,15 @@ export function App() {
 							hover:scrollbar-thumb-zinc-700
 							'
 							placeholder='Inclua o prompt para a IA:'
+							value={input}
+							onChange={handleInputChange}
 						/>
 						<Textarea
 							className='resize-none p-4 leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full
 							hover:scrollbar-thumb-zinc-700'
 							placeholder='Resultado gerado pela IA:'
 							readOnly
+							value={completion}
 						/>
 					</div>
 
@@ -75,26 +103,15 @@ export function App() {
 				</section>
 
 				<aside className='w-auto md:w-80 space-y-6 scroll-auto'>
-					<VideoInputForm />
+					<VideoInputForm onVideoUploaded={setVideoId} />
 
 					<Separator />
 
-					<form className='space-y-6'>
+					<form onSubmit={handleSubmit} className='space-y-6'>
 						<div className='space-y-2'>
 							<Label>Prompt</Label>
 
-							<Select>
-								<SelectTrigger>
-									<SelectValue placeholder='Selecione um prompt' />
-								</SelectTrigger>
-								<SelectContent>
-									<SelectItem value='title'>Título do YouTube</SelectItem>
-									<SelectItem value='description'>Descrição do YouTube</SelectItem>
-								</SelectContent>
-							</Select>
-							<span className='block text-xs italic text-muted-foreground'>
-								Você poderá customizar esta opção em breve
-							</span>
+							<PromptSelect onPromptSelected={setInput} />
 						</div>
 
 						<div className='space-y-2'>
@@ -116,9 +133,20 @@ export function App() {
 						<Separator />
 
 						<div className='space-y-4'>
-							<Label>Temperatura</Label>
-
-							<Slider min={0} max={1} step={0.1} className='cursor-pointer' />
+							<div className='flex items-center justify-between'>
+								<Label>Temperatura</Label>
+								<span className='leading-relaxed text-muted-foreground'>
+									{temperature}
+								</span>
+							</div>
+							<Slider
+								min={0}
+								max={1}
+								step={0.1}
+								className='cursor-pointer'
+								value={[temperature]}
+								onValueChange={(value) => setTemperature(value[0])}
+							/>
 
 							<span className='leading-relaxed block text-xs italic text-muted-foreground'>
 								Valores mais altos tendem a deixar o resultado mais criativo e com
@@ -128,10 +156,20 @@ export function App() {
 
 						<Separator />
 
-						<Button type='submit' className='w-full flex items-center gap-3'>
-							<span> Executar</span>
-
-							<FaWandMagicSparkles size={16} />
+						<Button
+							type='submit'
+							disabled={((!input || !videoId) && !isLoading) || isLoading}
+							className='w-full flex items-center gap-3'>
+							{isLoading ? (
+								<>
+									<PulseLoader color='#000' size={7} speedMultiplier={0.8} />
+								</>
+							) : (
+								<>
+									<span> Executar</span>
+									<FaWandMagicSparkles size={16} />
+								</>
+							)}
 						</Button>
 					</form>
 				</aside>

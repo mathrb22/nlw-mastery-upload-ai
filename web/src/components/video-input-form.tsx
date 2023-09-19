@@ -16,15 +16,31 @@ import { getFFmpeg } from '@/lib/ffmpeg';
 import { fetchFile } from '@ffmpeg/util';
 import { api } from '@/lib/axios';
 
-export function VideoInputForm() {
+type Status = 'waiting' | 'converting' | 'uploading' | 'generating' | 'success';
+
+const statusMessages = {
+	converting: 'Convertendo ...',
+	uploading: 'Fazendo upload...',
+	generating: 'Transcrevendo...',
+	success: 'Sucesso!',
+};
+
+interface VideoInputFormProps {
+	onVideoUploaded: (id: string) => void;
+}
+
+export function VideoInputForm(props: VideoInputFormProps) {
 	const [videoFile, setVideoFile] = useState<File | null>(null);
 	const [audioConversionProgress, setAudioConversionProgress] = useState(0); // 0 - 100
+
+	const [status, setStatus] = useState<Status>('waiting');
 
 	const promptInputRef = useRef<HTMLTextAreaElement>(null);
 
 	function handleFileSelected(event: ChangeEvent<HTMLInputElement>) {
 		const { files } = event.currentTarget;
-		if (!files) return;
+
+		if (!files || !files.length) return;
 
 		const uploadedFile = files[0];
 
@@ -43,6 +59,7 @@ export function VideoInputForm() {
 		ffmpeg.on('progress', (progress) => {
 			let conversionProgress = Math.round(progress.progress * 100);
 			setAudioConversionProgress(conversionProgress);
+			console.log('Progress: ' + conversionProgress + '%');
 		});
 
 		await ffmpeg.exec([
@@ -76,6 +93,8 @@ export function VideoInputForm() {
 
 		if (!videoFile) return;
 
+		setStatus('converting');
+
 		//converter o vídeo em áudio;
 		const audioFile = await convertVideoToAudio(videoFile);
 
@@ -83,9 +102,21 @@ export function VideoInputForm() {
 
 		data.append('file', audioFile);
 
+		setStatus('uploading');
+
 		const response = await api.post('/videos', data);
 
-		console.log(response.data);
+		const videoId = response.data.video.id;
+
+		setStatus('generating');
+
+		await api.post(`/videos/${videoId}/transcription`, {
+			prompt,
+		});
+
+		setStatus('success');
+
+		props.onVideoUploaded(videoId);
 	}
 
 	const previewURL = useMemo(() => {
@@ -97,18 +128,15 @@ export function VideoInputForm() {
 	}, [videoFile]);
 
 	useEffect(() => {
-		let completionTimeout: NodeJS.Timeout;
+		if (!videoFile) return;
 
-		if (audioConversionProgress === 100) {
-			completionTimeout = setTimeout(() => {
-				setAudioConversionProgress(0); // Reset progress after 3 seconds
-			}, 3000); // 3 segundos
+		setStatus('waiting');
+		// clear the promptInputRef;
+
+		if (promptInputRef?.current) {
+			promptInputRef.current.value = '';
 		}
-
-		return () => {
-			clearTimeout(completionTimeout); // Limpe o timeout ao desmontar o componente
-		};
-	}, [audioConversionProgress]);
+	}, [videoFile]);
 
 	return (
 		<form className='space-y-6' onSubmit={handleUploadVideo}>
@@ -142,6 +170,7 @@ export function VideoInputForm() {
 			<div className='space-y-2'>
 				<Label htmlFor='transcription_prompt'>Prompt de transcrição</Label>
 				<Textarea
+					disabled={status !== 'waiting'}
 					ref={promptInputRef}
 					id='transcription_prompt'
 					className=' h-20 p-4 resize-none leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full'
@@ -149,26 +178,24 @@ export function VideoInputForm() {
 			</div>
 
 			<Button
+				data-success={status === 'success'}
+				disabled={status !== 'waiting' || !videoFile}
 				type='submit'
 				className='w-full flex items-center gap-3'
 				size='default'>
-				{audioConversionProgress === 100 ? (
-					<>
-						<span>Conversão concluída</span>
-						<FiCheck size={16} />
-					</>
-				) : audioConversionProgress > 0 ? (
-					<>
-						<>
-							<LuLoader2 size={16} className='animate-spin' />
-							<span>Convertendo...</span>
-						</>
-						<span>{audioConversionProgress}%</span>
-					</>
-				) : (
+				{status === 'waiting' ? (
 					<>
 						<span>Carregar vídeo</span>
 						<FiUpload size={16} />
+					</>
+				) : (
+					<>
+						{status !== 'success' ? (
+							<LuLoader2 size={16} className='animate-spin' />
+						) : (
+							<></>
+						)}
+						<span>{statusMessages[status]}</span>
 					</>
 				)}
 			</Button>
