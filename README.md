@@ -37,7 +37,7 @@
 
 ## 📃 Sobre
 
-<img alt="Screenshot of the user interface for the upload.ai web application" src=".github/assets/upload.ai.png" width="100%"/>
+<img alt="upload.ai" src=".github/assets/upload.ai2.png" width="100%"/>
 
 **Upload.ai** é o projeto desenvolvido durante a trilha Mastery da **Next Level Week IA**, um evento online produzido pela [**Rocketseat**](https://github.com/Rocketseat).
 
@@ -61,7 +61,7 @@ O projeto **Upload.ai** possui muitas aplicações práticas. Ele poderá ajudar
 
 ## 💻 Demonstração
 
-<img alt="upload.ai" src=".github/assets/upload.ai2.png" width="100%"/>
+https://github.com/mathrb22/nlw-mastery-upload-ai/assets/62413443/e7f4d886-dc36-4885-ad58-3ccbf0b4b031
 
 ## 🚀 Tecnologias e ferramentas
 
