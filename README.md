@@ -54,9 +54,11 @@ O projeto **Upload.ai** possui muitas aplicações práticas. Ele poderá ajudar
 - [x] Upload de vídeos;
 - [x] Conversão de vídeo para áudio utilizando o [**ffmpeg.wasm**](https://ffmpegwasm.netlify.app/);
 - [x] Transcrição de áudio utilizando o [**Whisper (ASR - Automatic Speech Recognition)**](https://openai.com/research/whisper) da OpenAI;
+- [x] Customização dos prompts;
 - [x] Geração de resumo da transcrição utilizando o modelo GPT-3 da OpenAI;
 - [x] Geração de títulos chamativos utilizando o modelo GPT-3 da OpenAI;
 - [x] Geração de descrições otimizadas para SEO utilizando o modelo GPT-3 da OpenAI;
+- [x] Flexibilidade para definir a temperatura (nível de aleatoriedade) dos resultados gerados (0-1);
 - [x] Cópia dos resultados gerados pela IA para a área de transferência.
 
 ## 💻 Demonstração
