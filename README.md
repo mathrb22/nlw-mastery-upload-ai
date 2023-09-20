@@ -1,5 +1,6 @@
 <div align="center">
-   <h1>upload.ai</h1>
+<img src=".github/assets/icon-upload-ai.png" alt="Ícone de um robô para representação do projeto upload.ai" style="height: 85px">
+<h1>upload.ai</h1>
 </div>
 <div align="center">
    <a href="https://github.com/mathrb22">
@@ -25,6 +26,7 @@
 [**Sobre**](#-sobre) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Objetivo**](#-objetivo) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Features**](#-features) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Demonstração**](#-demonstração) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Tecnologias e ferramentas**](#-tecnologias-e-ferramentas) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Organização do projeto**](#-organização-do-projeto) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Instalação e execução**](#-instalação-e-execução) &nbsp;&nbsp;**|**&nbsp;&nbsp;
@@ -54,7 +56,12 @@ O projeto **Upload.ai** possui muitas aplicações práticas. Ele poderá ajudar
 - [x] Transcrição de áudio utilizando o [**Whisper (ASR - Automatic Speech Recognition)**](https://openai.com/research/whisper) da OpenAI;
 - [x] Geração de resumo da transcrição utilizando o modelo GPT-3 da OpenAI;
 - [x] Geração de títulos chamativos utilizando o modelo GPT-3 da OpenAI;
-- [x] Geração de descrições otimizadas para SEO utilizando o modelo GPT-3 da OpenAI.
+- [x] Geração de descrições otimizadas para SEO utilizando o modelo GPT-3 da OpenAI;
+- [x] Cópia dos resultados gerados pela IA para a área de transferência.
+
+## 💻 Demonstração
+
+<img alt="upload.ai" src=".github/assets/upload.ai2.png" width="100%"/>
 
 ## 🚀 Tecnologias e ferramentas
 

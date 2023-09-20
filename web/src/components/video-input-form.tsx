@@ -82,7 +82,7 @@ export function VideoInputForm(props: VideoInputFormProps) {
 			type: 'audio/mpeg',
 		});
 
-		console.log('Convert finished: ' + audioFile);
+		console.log('Convert finished');
 
 		return audioFile;
 	}

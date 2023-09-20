@@ -59,7 +59,14 @@ export function App() {
 	return (
 		<div className='min-h-screen flex flex-col'>
 			<header className='px-6 py-3 flex flex-col gap-3 md:flex-row items-center justify-between border-b sticky top-0 bg-background z-10'>
-				<h1 className='text-xl font-bold'>upload.ai</h1>
+				<div className='flex items-center gap-3'>
+					<img
+						src='../public/icon-upload-ai.png'
+						alt='Ícone do upload.ai'
+						className='w-7 h-7'
+					/>
+					<h1 className='text-xl font-bold'>upload.ai</h1>
+				</div>
 
 				<div className='flex items-center gap-3'>
 					<span className='text-xs md:text-sm text-muted-foreground'>
@@ -74,7 +81,6 @@ export function App() {
 					</span>
 
 					<Separator orientation='vertical' className='h-6 hidden md:block' />
-					{/* <Separator orientation='horizontal' className='w-full block md:hidden' /> */}
 
 					<a
 						href='https://github.com/mathrb22/upload-ai-web'
@@ -94,7 +100,7 @@ export function App() {
 					<div className='grid grid-rows-2 gap-4 h-[400px] md:flex-1 md:h-auto'>
 						<Textarea
 							className='resize-none p-4 leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full
-							hover:scrollbar-thumb-zinc-700
+							hover:scrollbar-thumb-zinc-700 text-base
 							'
 							placeholder='Inclua o prompt para a IA:'
 							value={input}
@@ -103,7 +109,7 @@ export function App() {
 						<div className='h-full relative'>
 							<Textarea
 								className='h-full resize-none p-4 leading-relaxed scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent scrollbar-rounded-full
-							hover:scrollbar-thumb-zinc-700'
+							hover:scrollbar-thumb-zinc-700 text-base'
 								placeholder='Resultado gerado pela IA:'
 								readOnly
 								value={completion}
@@ -111,17 +117,16 @@ export function App() {
 
 							{completion && (
 								<button
+									data-clipboard-copied={clipboardCopied}
 									disabled={isLoading}
-									className={`group absolute bottom-2 right-2 text-muted-foreground transition-all p-2 rounded-md border border-gray-700 hover:text-current hover:border-gray-600 disabled:text-muted-foreground disabled:pointer-events-none disabled:border-gray-700 ${
-										clipboardCopied ? 'border-primary-foreground' : ''
-									}`}
+									className='group absolute bottom-2 right-2 text-muted-foreground transition-all p-2 rounded-md border border-gray-700 hover:text-current hover:border-gray-600 disabled:text-muted-foreground disabled:pointer-events-none disabled:border-gray-700 data-[clipboard-copied=true]:border-primary-foreground'
 									onClick={handleCopyAIResultToClipboard}>
 									{clipboardCopied ? (
-										<LuCheck size={18} className={'text-primary transition-all'} />
+										<LuCheck size={18} className='text-primary transition-all' />
 									) : (
 										<MdOutlineContentCopy
 											size={18}
-											className={'transition-all animate-out group-hover:text-white'}
+											className='transition-all animate-out group-hover:text-white'
 										/>
 									)}
 								</button>
