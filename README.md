@@ -77,6 +77,7 @@ https://github.com/mathrb22/nlw-mastery-upload-ai/assets/62413443/e7f4d886-dc36-
         <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">TailwindCSS</a>,
         <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">Vite.js</a>,
         <a href="https://radix-ui.com/" target="_blank" rel="noopener noreferrer">Radix UI</a>,
+        <a href="https://ui.shadcn.com/" target="_blank" rel="noopener noreferrer">Shadcn/ui</a>,
         <a href="https://ffmpegwasm.netlify.app/" target="_blank" rel="noopener noreferrer">ffmpeg.wasm</a>,
         <a href="https://axios-http.com/" target="_blank" rel="noopener noreferrer">Axios</a>,
         <a href="https://www.npmjs.com/package/ai" target="_blank" rel="noopener noreferrer">Vercel AI SDK</a>
